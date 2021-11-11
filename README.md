@@ -5,7 +5,7 @@
 1. Clone the repo
 
 ```sh
-git clone 
+git clone https://github.com/stfibonacci/course-dapp
 ```
 
 2. Install the dependencies
