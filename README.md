@@ -51,7 +51,9 @@ npm start
 
 1. Get Kovan Eth
 https://faucet.kovan.network/
+
 https://gitter.im/kovan-testnet/faucet
+
 https://faucets.chain.link
 
 2. Get Kovan Dai 
