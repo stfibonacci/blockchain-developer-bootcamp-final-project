@@ -10,6 +10,8 @@ const courseAddress = "0xde169528c593b0Ba14c7A3C685B000ab6693b289"
 const courseFactory = "0x3F17d375236F94C77fEa4B6304E8A63A56a07708"
 const IERC20Address = "0x4F96Fe3b7A6Cf9725f59d353F723c1bDb64CA6Aa"
 const CErc20Address = "0xf0d0eb522cfa50b716b3b1604c4f0fa6f04376ad"
+
+//local 
 //const courseAddress = "0x5FbDB2315678afecb367f032d93F642f64180aa3"
 
 
