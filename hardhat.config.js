@@ -27,7 +27,7 @@ if (!privateKey) {
 
 
 module.exports = {
-  defaultNetwork: "hardhat",
+  defaultNetwork: "kovan",
   paths: {
     artifacts: './src/artifacts',
   },
@@ -43,10 +43,10 @@ module.exports = {
     //   url: "https://rinkeby.infura.io/v3/projectid",
     //   accounts: [process.env.a2key]
     // },
-    // kovan: {
-    //       url: providerUrl,
-    //       accounts: [`0x${privateKey}`]
-    // },
+    kovan: {
+          url: providerUrl,
+          accounts: [`0x${privateKey}`]
+    },
     
   },
   solidity: "0.8.4",
