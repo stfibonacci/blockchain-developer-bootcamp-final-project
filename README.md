@@ -27,10 +27,6 @@ git clone https://github.com/stfibonacci/course-dapp.git
 ```sh
 cd course-dapp
 npm install
-
-# or
-
-yarn
 ```
 
 3. Start the local test node in another tab
@@ -56,7 +52,7 @@ npx hardhat test
 npx hardhat run scripts/deploy.js --network localhost
 ```
 
-7. Run the app
+7. Run the app on `http://localhost:3000`
 
 ```sh
 npm start
