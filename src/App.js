@@ -7,7 +7,7 @@ import CErc20 from './artifacts/contracts/Course.sol/CErc20.json'
 
 
 const courseAddress = "0xde169528c593b0Ba14c7A3C685B000ab6693b289"
-const courseFactory = "0x3F17d375236F94C77fEa4B6304E8A63A56a07708"
+const courseFactory = "0xddA04D1723B8E0CDF8B4910558A954753E219f10"
 const IERC20Address = "0x4F96Fe3b7A6Cf9725f59d353F723c1bDb64CA6Aa"
 const CErc20Address = "0xf0d0eb522cfa50b716b3b1604c4f0fa6f04376ad"
 

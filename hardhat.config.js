@@ -2,12 +2,12 @@ require('dotenv').config();
 require("@nomiclabs/hardhat-waffle");
 require('hardhat-gas-reporter');
 
+//for kovan testnet
+const providerUrl = process.env.PROVIDER_URL;
+const privateKey = process.env.PRIVATE_KEY;
 
-// const providerUrl = process.env.PROVIDER_URL;
 // const developmentMnemonic = process.env.DEV_MNEMONIC;
 
-//for kovan testnet
-const privateKey = process.env.PRIVATE_KEY;
 
 
 module.exports = {

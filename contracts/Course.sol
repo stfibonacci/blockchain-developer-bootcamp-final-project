@@ -290,7 +290,7 @@ contract Course is
     function getRewardsBalance() 
       public
       view 
-      returns(uint256) 
+      returns(uint) 
     {
       uint contractBalance = getUnderlyingBalance();
       uint refundAmount = NumCustomers * courseFee;
@@ -304,7 +304,7 @@ contract Course is
     function getUserBalance() 
       public 
       view 
-      returns(uint256) 
+      returns(uint) 
     {
       return userBalances[msg.sender];
     }
