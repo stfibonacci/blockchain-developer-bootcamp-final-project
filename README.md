@@ -71,7 +71,7 @@ npm start
 3. Set your environment variables
 
 ```sh
-PROVIDER_URL=https://eth-kovan.alchemyapi.io/v2/<YOUR INFURA API KEY HERE>;
+PROVIDER_URL=https://eth-kovan.alchemyapi.io/v2/<YOUR ALCHEMY API KEY HERE>;
 const privateKey = <YOUR PRIVATE KEY HERE> ;
 ```
 4. Get Kovan Eth for deployment
