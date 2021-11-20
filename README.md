@@ -85,11 +85,11 @@ PRIVATE_KEY =  <YOUR PRIVATE KEY HERE> ;
 ```
 4. Get Kovan Eth. You will need it for deploying the contract to Kovan Testnet.
 
-https://faucet.kovan.network/
+- https://faucet.kovan.network/
 
-https://gitter.im/kovan-testnet/faucet
+- https://gitter.im/kovan-testnet/faucet
 
-https://faucets.chain.link
+- https://faucets.chain.link
 
 
 5. Deploy the contract to the Kovan testnet.Save the Course contract address. 
@@ -108,13 +108,44 @@ npm start
 
 8. Get Kovan Dai to test the app
 
-You can swap some of Kovan Eth for Dai
+- You can swap some of Kovan Eth for Dai from https://app.uniswap.org/#/swap
 
-https://app.uniswap.org/#/swap
-
-You can borrow DAI from OASIS 
-
-https://oasis.app/?network=kovan
+- You can borrow DAI from OASIS https://oasis.app/?network=kovan
 
 
+9. You need the initialize the contract with required parameters as a creator. This will set the course fee , duration and owner.
 
+- course fee (e.g. , 2 )
+- course duration (e.g. 4 )
+- your address as an owner (e.g. 0x0067... )
+- Click `Initialize`
+- The other parameters are hard coded to app.js file.(e.g. _underlyingAddress , _cTokenAddress ,  _enrollmentIsOpen)
+
+10. You can switch to another account to test the enrollment as a student.
+
+- First approve the course fee (e.g. , 2 )
+- Second Enroll by paying course fee (e.g. , 2 )
+
+ Contract balance will be updated and funds will be locked until the course ends (e.g. 4 weeks)
+
+11. Switch back to owner account to start the course.Only owner can call this function.
+
+- Click `Start Course`
+
+ Funds will be sent to Compound Vault and will stay there until the course ends and earn interest.
+
+ 12. You can end the course early for testing purposes.Only owner can call this function.
+
+ - Click `Update Duration` (enter `0` to `Number of Weeks`)
+
+ This will unlock the funds.
+
+ 13. You can end the course now.
+
+ - Click `End Course`
+
+ This will withdraw funds from Compound Vault and send the rewards to the creator.Students can withdraw their course fee now.
+
+ 14. Switch back to student account to get refund.
+
+ - Click `Refund`
