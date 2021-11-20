@@ -7,10 +7,12 @@ Free education is desirable but not realistic. We need to find a system that wil
 ## Usage
 
 Course is a decentralized app for making high-quality education accessible to everyone.
-The educators can create a course by deploying this contract. 
+
+The educators can create a course by deploying `Course.sol` contract or call `createCourse()` function from the `CourseFactory.sol` contract to deploy cheap Course clone. 
 They need to choose stable coin for payment , compound vault for deposits and setting a course fee and duration.
+
 Students can enroll by paying the course fee. These funds will be locked during the course and they will be transfered to Compound vault.The funds will generate yield until the course ends.
-Studens can withdraw the course fee at the end of the course. They can fully refund the course fee and the only rewards will be sent to course creator.
+Studens can withdraw the course fee at the end of the course. They will get full refund the course fee and the educators will get rewards from Compound vault.
 
 ## Build and Run locally
 
@@ -27,9 +29,10 @@ git clone https://github.com/stfibonacci/course-dapp.git
 ```sh
 cd course-dapp
 npm install
+npm install -g npx
 ```
 
-3. Start the local test node in another tab
+3. Start the local test node in a second command line window or tab. Run the code from the root directory.
 
 ```sh
 npx hardhat node
@@ -60,17 +63,27 @@ npm start
 
 ## Run on Kovan
 
-1. Get an [Infura](https://infura.io/) or [Alchemy](https://alchemy.com) account.
+1. Get an [Infura](https://infura.io/) or [Alchemy](https://alchemy.com) account to access the blockchain.
 
 2. Get your private key from Metamask
 
-3. Set your environment variables
+- Click on the identicon
+- Select the account you'd like to export
+- On the Account page, click on the menu (three dots) at the upper right corner
+- Click on the “Account Details” button
+- Click “Export Private Key”
+- Enter your password and click “Confirm”
+- Click to copy it, and save it somewhere safe.
+- Click “Done” to close the screen
+
+
+3. Create `.env` file and set your environment variables.
 
 ```sh
-PROVIDER_URL=https://eth-kovan.alchemyapi.io/v2/<YOUR ALCHEMY API KEY HERE>;
-const privateKey = <YOUR PRIVATE KEY HERE> ;
+PROVIDER_URL=https://kovan.infura.io/v3/<YOUR INFURA API KEY HERE>;
+PRIVATE_KEY =  <YOUR PRIVATE KEY HERE> ;
 ```
-4. Get Kovan Eth for deployment
+4. Get Kovan Eth. You will need it for deploying the contract to Kovan Testnet.
 
 https://faucet.kovan.network/
 
@@ -79,13 +92,21 @@ https://gitter.im/kovan-testnet/faucet
 https://faucets.chain.link
 
 
-2. Deploy the contract to the Kovan testnet
+5. Deploy the contract to the Kovan testnet.Save the Course contract address. 
 
 ```sh
-npx hardhat run scripts/deploy.js --network Kovan
+npx hardhat run scripts/deploy.js --network kovan
 ```
 
-2. Get Kovan Dai to test the app
+6. Go to `src/App.js` and change the `courseAddress` with the new deployed address.(Step 5)
+
+7. Run the app on `http://localhost:3000`
+
+```sh
+npm start
+```
+
+8. Get Kovan Dai to test the app
 
 You can swap some of Kovan Eth for Dai
 
