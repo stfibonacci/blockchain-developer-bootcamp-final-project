@@ -6,7 +6,7 @@ Free education is desirable but not realistic. We need to find a system that wil
 
 ## Usage
 
-https://course-dapp.herokuapp.com/
+Kovan Address : https://course-dapp.herokuapp.com/
 
 Course is a decentralized app for making high-quality education accessible to everyone.
 
