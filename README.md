@@ -6,6 +6,8 @@ Free education is desirable but not realistic. We need to find a system that wil
 
 ## Usage
 
+https://course-dapp.herokuapp.com/
+
 Course is a decentralized app for making high-quality education accessible to everyone.
 
 The educators can create a course by deploying `Course.sol` contract or call `createCourse()` function from the `CourseFactory.sol` contract to deploy cheap Course clone. 
