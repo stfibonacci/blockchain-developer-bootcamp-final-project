@@ -91,7 +91,7 @@ PRIVATE_KEY =  <YOUR PRIVATE KEY HERE> ;
 npx hardhat run scripts/deploy.js --network kovan
 ```
 
-6. Go to `src/App.js` and change the `courseAddress` with the new deployed address.(Step 5)
+6. Go to `src/Addresses.js` and change the `courseAddress` with the new deployed address.(Step 5)
 
 7. Run the app on `http://localhost:3000`
 
@@ -127,7 +127,7 @@ npm start
 
 - Click `Start Course`
 
- Funds will be sent to Compound Vault and will stay there until the course ends and earn interest.Contract cDai balance will be updated.
+ Funds will be sent to Compound Vault and stay there until the course ends and earn interest.Contract cDai balance will be updated.
 
  12. You can end the course early for testing purposes.Only owner can call this function.
 
