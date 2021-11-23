@@ -1,15 +1,16 @@
 import { useEffect, useState } from "react";
 import { ethers } from 'ethers'
 import "./App.css";
-import Course from './artifacts/contracts/Course.sol/Course.json'
-import IERC20 from './artifacts/@openzeppelin/contracts/token/ERC20/IERC20.sol/IERC20.json'
-import CErc20 from './artifacts/contracts/Course.sol/CErc20.json'
+import Course from './utils/Course.json';
+import IERC20 from './utils/IERC20.json';
+import CErc20 from './utils/CErc20.json';
+import { courseAddress, IERC20Address, CErc20Address } from './constants';
 
 
-const courseAddress = "0xde169528c593b0Ba14c7A3C685B000ab6693b289"
-const courseFactory = "0xddA04D1723B8E0CDF8B4910558A954753E219f10"
-const IERC20Address = "0x4F96Fe3b7A6Cf9725f59d353F723c1bDb64CA6Aa"
-const CErc20Address = "0xf0d0eb522cfa50b716b3b1604c4f0fa6f04376ad"
+
+// const courseAddress = "0xfa72711B3eD75fc21488f06C3C21a3e378e33814"
+// const IERC20Address = "0x4F96Fe3b7A6Cf9725f59d353F723c1bDb64CA6Aa"
+// const CErc20Address = "0xf0d0eb522cfa50b716b3b1604c4f0fa6f04376ad"
 
 //local 
 //const courseAddress = "0x5FbDB2315678afecb367f032d93F642f64180aa3"
@@ -22,7 +23,9 @@ function App() {
   const [course, setCourse] = useState(undefined);
   const [underlying, setUnderlying] = useState(undefined);
   const [cToken, setCtoken] = useState(undefined);
+
   const [account, setAccount] = useState(null)
+
   const [fee, setFee] = useState("")
   const [week, setWeek] = useState("")
   const [underlyingBalance, setUnderlyingBalance] = useState("")
@@ -30,7 +33,12 @@ function App() {
   const [amount, setAmount] = useState()
   const [approveAmount, setApproveAmount] = useState()
   const [time, setTime] = useState("")
-
+  
+  const [owner, setOwner] = useState("")
+  const [address, setAddress] = useState("")
+  const [initFee, setInitFee] = useState("")
+  const [initWeek, setInitWeek] = useState("")
+  
   const setAccountListener = provider => {
     provider.on("accountsChanged", _ => window.location.reload())
     provider.on("chainChanged", _ => window.location.reload())
@@ -91,11 +99,27 @@ function App() {
         console.log("balance: ", cBalance.toString());
         setCtokenBalance(cBalance)
 
+        const owner = await course.owner();
+        console.log("owner: ", owner);
+        setOwner(owner)
+        
       }
 
     } 
     account && signer && course && underlying && cToken && load()
   }, [ account, signer, course, underlying, cToken ])
+
+  async function initializeCourse() {
+    if (typeof window.ethereum !== 'undefined') {
+      
+      
+      const enrollmentIsOpen = true
+      const transaction = await course.initialize(IERC20Address, CErc20Address, (initFee * Math.pow(10, 18)).toString(), initWeek, enrollmentIsOpen, address);
+      await transaction.wait();
+      console.log(`${address} is the owner`);
+    }
+    window.location.reload()
+  }
   
 
   async function approveCourse() {
@@ -173,8 +197,29 @@ function App() {
           <strong className="mr-2 ">Course Duration: {week} weeks</strong>
           <div className="dai-view ">
           </div>
+          <strong className="mr-2 ">Owner: {owner} </strong>
+          <div className="dai-view ">
+          </div>
+
+          <div className="creator-view is-size-4">
+          <h4>For Creator</h4>
+
+          <input onChange={e => setInitFee(e.target.value)} className="input is-success is-small" type="text" placeholder="Course Fee" />
+          <input onChange={e => setInitWeek(e.target.value)} className="input is-success is-small" type="text" placeholder="Number of Weeks" />
+          <input onChange={e => setAddress(e.target.value)} className="input is-success is-small" type="text" placeholder="Owner Address" />
+          <button disabled={!account} onClick={initializeCourse} className="button is-warning is-small">Initialize</button>
+
+          <input onChange={e => setTime(e.target.value)} className="input is-success is-small" type="text" placeholder="Number of Weeks" />
+          <button disabled={!account} onClick={updateTimestamp} className="button is-warning is-small">Update Duration</button>
+          <div>
+          <button disabled={!account} onClick={start} className="button is-primary mr-2 is-small">Start Course</button>
+          <button disabled={!account} onClick={end} className="button is-danger mr-2 is-small">End Course</button>
+          </div>
+          
+          </div>
+
           <div className="enrollment-view is-size-4">
-          <h4>Enrollment</h4>
+          <h4>For Student</h4>
           <div>
           <input onChange={e => setApproveAmount(e.target.value)} className="input is-success is-small" type="text" placeholder="Amount" />
           <button disabled={!account} onClick={approveCourse} className="button is-warning is-small">Approve</button>
@@ -183,16 +228,7 @@ function App() {
           </div>
           <button disabled={!account} onClick={refundFromCourse} className="button is-danger is-small">Refund</button>
           </div>
-          <div className="creator-view is-size-4">
-          <h4>Creator</h4>
-          <input onChange={e => setTime(e.target.value)} className="input is-success is-small" type="text" placeholder="Number of Weeks" />
-          <button disabled={!account} onClick={updateTimestamp} className="button is-warning is-small">Duration</button>
-          <div>
-          <button disabled={!account} onClick={start} className="button is-primary mr-2 is-small">Start Course</button>
-          <button disabled={!account} onClick={end} className="button is-danger mr-2 is-small">End Course</button>
-          </div>
           
-          </div>
         </div>
       </div>
     </>

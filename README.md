@@ -2,7 +2,7 @@
 
 ## Overview
  
-Free education is desirable but not realistic. We need to find a system that will give quality education to all students equally. Most of the kids dont have access to quality education because of their income level. Educators and creators need to be incentivized for their high-quality content. In order to create accessible education, it must be sustainable. The power of decentralized finance can help us develop strategies to solve this issue.
+Free education is desirable but not realistic. We need to find a system that will give quality education to all students equally. Most of the students dont have access to quality education because of their income level. Educators and creators need to be incentivized for their high-quality content. In order to create accessible education, it must be sustainable. The power of decentralized finance can help us develop strategies to solve this issue.
 
 ## Usage
 
@@ -65,16 +65,7 @@ npm start
 
 1. Get an [Infura](https://infura.io/) or [Alchemy](https://alchemy.com) account to access the blockchain.
 
-2. Get your private key from Metamask
-
-- Click on the identicon
-- Select the account you'd like to export
-- On the Account page, click on the menu (three dots) at the upper right corner
-- Click on the “Account Details” button
-- Click “Export Private Key”
-- Enter your password and click “Confirm”
-- Click to copy it, and save it somewhere safe.
-- Click “Done” to close the screen
+2. Get your private key from Metamask [here](https://metamask.zendesk.com/hc/en-us/articles/360015289632-How-to-Export-an-Account-Private-Key)
 
 
 3. Create `.env` file and set your environment variables.
@@ -85,6 +76,8 @@ PRIVATE_KEY =  <YOUR PRIVATE KEY HERE> ;
 ```
 4. Get Kovan Eth. You will need it for deploying the contract to Kovan Testnet.
 
+- https://faucet.paradigm.xyz/
+
 - https://faucet.kovan.network/
 
 - https://gitter.im/kovan-testnet/faucet
@@ -92,7 +85,7 @@ PRIVATE_KEY =  <YOUR PRIVATE KEY HERE> ;
 - https://faucets.chain.link
 
 
-5. Deploy the contract to the Kovan testnet.Save the Course contract address. 
+5. Deploy the contract to the Kovan testnet and save the Course contract address. 
 
 ```sh
 npx hardhat run scripts/deploy.js --network kovan
@@ -107,6 +100,8 @@ npm start
 ```
 
 8. Get Kovan Dai to test the app
+
+- https://faucet.paradigm.xyz/
 
 - You can swap some of Kovan Eth for Dai from https://app.uniswap.org/#/swap
 
@@ -123,16 +118,16 @@ npm start
 
 10. You can switch to another account to test the enrollment as a student.
 
-- First approve the course fee (e.g. , 2 )
-- Second Enroll by paying course fee (e.g. , 2 )
+- Approve the course fee (e.g. , 2 )
+- Enroll by paying course fee (e.g. , 2 )
 
- Contract balance will be updated and funds will be locked until the course ends (e.g. 4 weeks)
+ Contract DAI balance will be updated and funds will be locked until the course ends (e.g. 4 weeks)
 
 11. Switch back to owner account to start the course.Only owner can call this function.
 
 - Click `Start Course`
 
- Funds will be sent to Compound Vault and will stay there until the course ends and earn interest.
+ Funds will be sent to Compound Vault and will stay there until the course ends and earn interest.Contract cDai balance will be updated.
 
  12. You can end the course early for testing purposes.Only owner can call this function.
 
