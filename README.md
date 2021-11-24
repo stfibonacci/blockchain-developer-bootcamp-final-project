@@ -131,18 +131,21 @@ npm start
 
  Funds will be sent to Compound Vault and stay there until the course ends and earn interest.Contract cDai balance will be updated.
 
- 12. You can end the course early for testing purposes.Only owner can call this function.
-
- - Click `Update Duration` (enter `0` to `Number of Weeks`)
-
- This will unlock the funds.
-
- 13. You can end the course now.
+ 12. You can end the course now.
 
  - Click `End Course`
 
  This will withdraw funds from Compound Vault and send the rewards to the creator.Students can withdraw their course fee now.
 
- 14. Switch back to student account to get refund.
+ 13. Switch back to student account to get refund.
 
  - Click `Refund`
+
+## TODO
+
+- Update Frontend
+- Create Marketplace for deployed courses
+- Add more tests
+- Add eth vault
+- Add Yearn Finance Vaults
+- Maybe token 

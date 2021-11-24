@@ -157,7 +157,7 @@ contract Course is
     ///@notice This function update unlockTimestamp
     ///@param _courseNumberOfWeeks New deadline for new Course.
     function updateUnlockTimestamp(uint _courseNumberOfWeeks) 
-    external 
+    public 
     onlyOwner
     {
       courseNumberOfWeeks = _courseNumberOfWeeks;
@@ -172,6 +172,10 @@ contract Course is
       require(
         enrollmentIsOpen == true,
         "Course has already started"
+      );
+      require(
+        getUnderlyingBalance() > 0,
+        "Contract doesnt have Underlying token balance"
       );
       
       _investToCompound();
@@ -188,8 +192,10 @@ contract Course is
         enrollmentIsOpen == false,
         "Course has already ended"
       );
+      
       _withdrawFromComp();
       _issueRewards();
+      updateUnlockTimestamp(0);
       enrollmentIsOpen = true;
     }
     

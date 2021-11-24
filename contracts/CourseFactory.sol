@@ -11,15 +11,6 @@ import "./Course.sol";
 ///@notice This contract creates Course clones
 contract CourseFactory {
      
-    // event CreateCourse(
-    //   address indexed clone,
-    //    address indexed creator,
-    //    address underlyingAddress,
-    //    address cTokenAddress,
-    //    uint fee,
-    //    uint courseNumberOfWeeks,
-    //    bool enrollmentIsOpen
-    //   );
 
     ///@dev Address of the implemented contract
     address immutable implementation;
@@ -50,15 +41,14 @@ contract CourseFactory {
       cloneAddresses.push(clone);
       return address(clone);
 
-      //emit CreateCourse(address(clone), msg.sender,_underlyingAddress,_cTokenAddress,_fee, _courseNumberOfWeeks, _enrollmentIsOpen );
     }
     
-    // ///@notice This function returns all the Course clone addresses
-    // function getCloneAddresses() 
-    //   public 
-    //   view 
-    //   returns(address[] memory) 
-    // {
-    //     return cloneAddresses;
-    // }
+    ///@notice This function returns all the Course clone addresses
+    function getCloneAddresses() 
+      public 
+      view 
+      returns(address[] memory) 
+    {
+        return cloneAddresses;
+    }
 }

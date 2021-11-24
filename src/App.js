@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { ethers } from 'ethers'
 import "./App.css";
+//import CourseFactory from './artifacts/contracts/CourseFactory.sol/CourseFactory.json';
+//import Course from './artifacts/contracts/Course.sol/Course.json';
 import Course from './utils/Course.json';
 import IERC20 from './utils/IERC20.json';
 import CErc20 from './utils/CErc20.json';
@@ -13,9 +15,7 @@ function App() {
   const [course, setCourse] = useState(undefined);
   const [underlying, setUnderlying] = useState(undefined);
   const [cToken, setCtoken] = useState(undefined);
-
   const [account, setAccount] = useState(null)
-
   const [fee, setFee] = useState("")
   const [week, setWeek] = useState("")
   const [underlyingBalance, setUnderlyingBalance] = useState("")
@@ -28,6 +28,7 @@ function App() {
   const [address, setAddress] = useState("")
   const [initFee, setInitFee] = useState("")
   const [initWeek, setInitWeek] = useState("")
+
   
   const setAccountListener = provider => {
     provider.on("accountsChanged", _ => window.location.reload())
@@ -114,10 +115,12 @@ function App() {
 
   async function approveCourse() {
     if (typeof window.ethereum !== 'undefined') {
+      
       const transaction = await underlying.approve(courseAddress,(approveAmount * Math.pow(10, 18)).toString());
       await transaction.wait();
       console.log(`${approveAmount} dai approved succesfully`);
     }
+    
   }
 
   async function enrollToCourse() {
@@ -164,61 +167,68 @@ function App() {
     }
     window.location.reload()
   }
-  
+
 
 
   return (
     <>
       <nav>
         <button className="button is-info is-small" onClick={requestAccount} >Connect Metamask</button>
-          <strong>  {account ? account : "not connected"}   </strong> 
+          <strong>  {account ? account : "Not connected! Connect to Kovan"}   </strong> 
       </nav>
       <div className="course-general">
         <div className="account">
           <div className="account-view is-flex is-align-items-center">
-          <strong className="mr-2 ">Contract Balance: {underlyingBalance} Dai</strong>
+          <h4 className="mr-2 ">Contract Balance: {underlyingBalance} Dai</h4>
           </div>
           <div>
-          <strong className="mr-2 ">Contract Balance: {cTokenBalance} cDai</strong>
+          <h4 className="mr-2 ">Contract Balance: {cTokenBalance} cDai</h4>
           </div>  
-          <strong className="mr-2 ">Course Fee: {fee} Dai</strong>
+          <h4 className="mr-2 ">Course Fee: {fee} Dai</h4>
           <div className="dai-view ">
           </div>  
-          <strong className="mr-2 ">Course Duration: {week} weeks</strong>
+          <h4 className="mr-2 ">Course Duration: {week} weeks</h4>
           <div className="dai-view ">
           </div>
-          <strong className="mr-2 ">Owner: {owner} </strong>
+          <h4 className="mr-2 ">Owner: {owner} </h4>
           <div className="dai-view ">
           </div>
 
           <div className="creator-view is-size-4">
-          <h4>For Creator</h4>
-
+          <h4>Create Course</h4>
+          <p className="is-size-7">Enter the required parameters to create the course</p>
           <input onChange={e => setInitFee(e.target.value)} className="input is-success is-small" type="text" placeholder="Course Fee" />
           <input onChange={e => setInitWeek(e.target.value)} className="input is-success is-small" type="text" placeholder="Number of Weeks" />
           <input onChange={e => setAddress(e.target.value)} className="input is-success is-small" type="text" placeholder="Owner Address" />
           <button disabled={!account} onClick={initializeCourse} className="button is-warning is-small">Initialize</button>
-
-          <input onChange={e => setTime(e.target.value)} className="input is-success is-small" type="text" placeholder="Number of Weeks" />
-          <button disabled={!account} onClick={updateTimestamp} className="button is-warning is-small">Update Duration</button>
-          <div>
-          <button disabled={!account} onClick={start} className="button is-primary mr-2 is-small">Start Course</button>
-          <button disabled={!account} onClick={end} className="button is-danger mr-2 is-small">End Course</button>
-          </div>
           
           </div>
 
-          <div className="enrollment-view is-size-4">
-          <h4>For Student</h4>
+          <div className="enrollment-view is-size-4 ">
+          <h4>Enrollment for students</h4>
           <div>
+          <p className="is-size-7">Approve the course fee : {underlyingBalance} dai</p>
           <input onChange={e => setApproveAmount(e.target.value)} className="input is-success is-small" type="text" placeholder="Amount" />
           <button disabled={!account} onClick={approveCourse} className="button is-warning is-small">Approve</button>
+          <p className="is-size-7">Enter the course fee : {underlyingBalance} dai</p>
           <input onChange={e => setAmount(e.target.value)} className="input is-success is-small" type="text" placeholder="Amount" />
           <button disabled={!account} onClick={enrollToCourse} className="button is-primary is-small">Enroll</button>
           </div>
+          <p className="is-size-7">Funds will be locked after enrollment.You can get refund after {week} weeks</p>
           <button disabled={!account} onClick={refundFromCourse} className="button is-danger is-small">Refund</button>
           </div>
+          <div className="enrollment-view is-size-4 ">
+          <h4>For Creator</h4>
+          <button disabled={!account} onClick={start} className="button is-primary mr-2 is-small">Start Course</button>
+          <button disabled={!account} onClick={end} className="button is-danger mr-2 is-small">End Course</button>
+          <p className="is-size-7">Start:Enrollment ends and funds will be transfered to Compound Vault to earn interest</p>
+          <p className="is-size-7">End:Funds will be transfered back to Contract.Rewards are issued to the creator.Students can refund now</p>
+          {/* <input onChange={e => setTime(e.target.value)} className="input is-success is-small" type="text" placeholder="Number of Weeks" />
+          <button disabled={!account} onClick={updateTimestamp} className="button is-warning is-small">Update Duration</button>
+          <p className="is-size-7">update duration to for the new course.</p> */}
+          </div>
           
+      
         </div>
       </div>
     </>
