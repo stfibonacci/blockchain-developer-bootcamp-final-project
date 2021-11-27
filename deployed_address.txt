@@ -1,5 +1,5 @@
 Kovan Testnet
 
-Course Contract Address: 0xC581cf89E8a459DbB5Ccc66f131Ad47DfBa6E46c
-Course Factory Address: 0x84cd96B45275ee840cFb7dB047864b4Fa9DFAa68
-Course Clone1 Address: 0x35331d584097ab0e7ccb29C90Bd7fC2F01aAebc6
+Course Contract Address: 0xf9ABb659cC2EB8cA5206d3cec182EdFad0fA310c
+Course Factory Address: 0x5D2864724339628d4446b34F2A10943C6046C582
+Course Clone0 Address: 0xE570550EE06f44f06E4472ceae389E54D75d4Cd1

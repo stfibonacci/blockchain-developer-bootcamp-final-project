@@ -207,10 +207,10 @@ function App() {
           <div className="enrollment-view is-size-4 ">
           <h4>Enrollment for students</h4>
           <div>
-          <p className="is-size-7">Approve the course fee : {underlyingBalance} dai</p>
+          <p className="is-size-7">Approve the course fee : {fee} dai</p>
           <input onChange={e => setApproveAmount(e.target.value)} className="input is-success is-small" type="text" placeholder="Amount" />
           <button disabled={!account} onClick={approveCourse} className="button is-warning is-small">Approve</button>
-          <p className="is-size-7">Enter the course fee : {underlyingBalance} dai</p>
+          <p className="is-size-7">Enter the course fee : {fee} dai</p>
           <input onChange={e => setAmount(e.target.value)} className="input is-success is-small" type="text" placeholder="Amount" />
           <button disabled={!account} onClick={enrollToCourse} className="button is-primary is-small">Enroll</button>
           </div>
