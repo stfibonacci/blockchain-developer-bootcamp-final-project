@@ -11,10 +11,10 @@ async function main() {
   console.log("Course deployed to:", course.address);
 
 
-  const CourseFactory = await hre.ethers.getContractFactory("CourseFactory");
-  const courseFactory = await CourseFactory.deploy(course.address);
-  await courseFactory.deployed();
-  console.log("CourseFactory deployed to:", courseFactory.address);
+  // const CourseFactory = await hre.ethers.getContractFactory("CourseFactory");
+  // const courseFactory = await CourseFactory.deploy(course.address);
+  // await courseFactory.deployed();
+  // console.log("CourseFactory deployed to:", courseFactory.address);
   
 
 }

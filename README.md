@@ -152,10 +152,10 @@ npm start
 
 ## Links
 
-1- Loom screencast
+1- Screencast
 
 https://www.loom.com/share/887a8d832d4844528d28865f31896d94
 
-2- Address for certification NFT
+2- Address for certification NFT 
 
 0x931d6b98834d195a359A46cBAC0EcA692E7138c3
