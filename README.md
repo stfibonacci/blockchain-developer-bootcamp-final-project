@@ -149,3 +149,13 @@ npm start
 - Add eth vault
 - Add Yearn Finance Vaults
 - Maybe token 
+
+## Links
+
+1- Loom for screencast
+
+https://www.loom.com/share/887a8d832d4844528d28865f31896d94
+
+2- Metamask for certification NFT
+
+0x931d6b98834d195a359A46cBAC0EcA692E7138c3
