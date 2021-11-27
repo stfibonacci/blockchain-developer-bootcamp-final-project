@@ -22,7 +22,7 @@ function App() {
   const [cTokenBalance, setCtokenBalance] = useState("")
   const [amount, setAmount] = useState()
   const [approveAmount, setApproveAmount] = useState()
-  const [time, setTime] = useState("")
+ 
   
   const [owner, setOwner] = useState("")
   const [address, setAddress] = useState("")
@@ -141,14 +141,7 @@ function App() {
     window.location.reload()
   }
 
-  async function updateTimestamp() {
-    if (typeof window.ethereum !== 'undefined') {
-      const transaction = await course.updateUnlockTimestamp(time);
-      await transaction.wait();
-      console.log(`course duration updated and it will be ${time} weeks`);
-    }
-    window.location.reload()
-  }
+
 
   async function start() {
     if (typeof window.ethereum !== 'undefined') {
