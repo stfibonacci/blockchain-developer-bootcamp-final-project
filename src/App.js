@@ -22,7 +22,6 @@ function App() {
   const [cTokenBalance, setCtokenBalance] = useState("")
   const [amount, setAmount] = useState()
   const [approveAmount, setApproveAmount] = useState()
- 
   
   const [owner, setOwner] = useState("")
   const [address, setAddress] = useState("")
@@ -142,12 +141,11 @@ function App() {
   }
 
 
-
   async function start() {
     if (typeof window.ethereum !== 'undefined') {
       const transaction = await course.startCourse();
       await transaction.wait();
-      console.log(`course started and funds will be locked ${time} weeks`);
+      console.log(`course started and funds will be locked ${week} weeks`);
     }
     window.location.reload()
   }
@@ -216,9 +214,6 @@ function App() {
           <button disabled={!account} onClick={end} className="button is-danger mr-2 is-small">End Course</button>
           <p className="is-size-7">Start:Enrollment ends and funds will be transfered to Compound Vault to earn interest</p>
           <p className="is-size-7">End:Funds will be transfered back to Contract.Rewards are issued to the creator.Students can refund now</p>
-          {/* <input onChange={e => setTime(e.target.value)} className="input is-success is-small" type="text" placeholder="Number of Weeks" />
-          <button disabled={!account} onClick={updateTimestamp} className="button is-warning is-small">Update Duration</button>
-          <p className="is-size-7">update duration to for the new course.</p> */}
           </div>
           
       
