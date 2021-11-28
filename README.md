@@ -34,7 +34,7 @@ cd course-dapp
 npm install
 ```
 
-3. Start the local test node in a second command line window or tab. Run the code from the root directory.
+3. Start the local test node in a second command line window or tab. Run the code from root directory.
 
 ```sh
 npx hardhat node
@@ -52,7 +52,7 @@ npx hardhat run scripts/deploy.js --network localhost
 npx hardhat test
 ```
 
-6. Update src/Addresses.js with the address of your contract addresses (`courseAddress`)
+6. Go to src/Addresses.js and change the `courseAddress` with the new deployed addresss
 
 
 7. Run the app on `http://localhost:3000`
@@ -68,13 +68,13 @@ npm start
 2. Get your private key from Metamask [here](https://metamask.zendesk.com/hc/en-us/articles/360015289632-How-to-Export-an-Account-Private-Key)
 
 
-3. Create `.env` file and set your environment variables.
+3. Create `.env` file in your root folder and set your environment variables.
 
 ```sh
-PROVIDER_URL=https://kovan.infura.io/v3/<YOUR INFURA API KEY HERE>;
-PRIVATE_KEY =  <YOUR PRIVATE KEY HERE> ;
+PROVIDER_URL=https://kovan.infura.io/v3/YOUR INFURA API KEY HERE
+PRIVATE_KEY = YOUR PRIVATE KEY HERE
 ```
-4. Go to `hardhat.config.js` and uncomment kovan network:
+4. Go to `hardhat.config.js`.Uncomment kovan network:
 
 ```sh
 kovan: {
@@ -83,7 +83,7 @@ kovan: {
     },
 ```    
 
-4. Get Kovan Eth. You will need it for deploying the contract to Kovan Testnet.
+5. Get Kovan Eth. You will need it for deploying the contract to Kovan Testnet.
 
 - https://faucet.paradigm.xyz/
 
@@ -94,21 +94,21 @@ kovan: {
 - https://faucets.chain.link
 
 
-5. Deploy the contract to the Kovan testnet and save the Course contract address. 
+6. Deploy the contract to the Kovan testnet and save the Course contract address. 
 
 ```sh
 npx hardhat run scripts/deploy.js --network kovan
 ```
 
-6. Go to `src/Addresses.js` and change the `courseAddress` with the new deployed address.(Step 5)
+7. Go to `src/Addresses.js` and change the `courseAddress` with the new deployed address.(Step 5)
 
-7. Run the app on `http://localhost:3000`
+8. Run the app on `http://localhost:3000`
 
 ```sh
 npm start
 ```
 
-8. Get Kovan Dai to test the app
+9. Get Kovan Dai to test the app
 
 - https://faucet.paradigm.xyz/
 
@@ -117,7 +117,7 @@ npm start
 - You can borrow DAI from OASIS https://oasis.app/?network=kovan
 
 
-9. You need the initialize the contract with required parameters as a creator. This will set the course fee , duration and owner.
+10. You need the initialize the contract with required parameters as a creator. This will set the course fee , duration and owner.
 
 - course fee (e.g. , 2 )
 - course duration (e.g. 4 )
@@ -125,26 +125,26 @@ npm start
 - Click `Initialize`
 - The other parameters are hard coded to app.js file.(e.g. _underlyingAddress , _cTokenAddress ,  _enrollmentIsOpen)
 
-10. You can switch to another account to test the enrollment as a student.
+11. You can switch to another account to test the enrollment as a student.
 
 - Approve the course fee (e.g. , 2 )
 - Enroll by paying course fee (e.g. , 2 )
 
  Contract DAI balance will be updated and funds will be locked until the course ends (e.g. 4 weeks)
 
-11. Switch back to owner account to start the course.Only owner can call this function.
+12. Switch back to owner account to start the course.Only owner can call this function.
 
 - Click `Start Course`
 
  Funds will be sent to Compound Vault and stay there until the course ends and earn interest.Contract cDai balance will be updated.
 
- 12. You can end the course now.
+ 13. You can end the course now.
 
  - Click `End Course`
 
  This will withdraw funds from Compound Vault and send the rewards to the creator.Students can withdraw their course fee now.
 
- 13. Switch back to student account to get refund.
+ 14. Switch back to student account to get refund.
 
  - Click `Refund`
 
