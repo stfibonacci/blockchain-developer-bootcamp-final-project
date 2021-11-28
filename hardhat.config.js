@@ -27,10 +27,10 @@ module.exports = {
     //   url: providerUrl,
     //   accounts: [`0x${privateKey}`]
     // },
-    kovan: {
-          url: providerUrl,
-          accounts: [`0x${privateKey}`]
-    },
+    // kovan: {
+    //       url: providerUrl,
+    //       accounts: [`0x${privateKey}`]
+    // },
     
   },
   solidity: "0.8.4",

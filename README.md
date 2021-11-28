@@ -32,7 +32,6 @@ git clone https://github.com/stfibonacci/course-dapp.git
 ```sh
 cd course-dapp
 npm install
-npm install -g npx
 ```
 
 3. Start the local test node in a second command line window or tab. Run the code from the root directory.
@@ -41,22 +40,20 @@ npm install -g npx
 npx hardhat node
 ```
 
-4. Compile the contract
+4. Deploy the contract
 
 ```sh
-npx hardhat compile
+npx hardhat run scripts/deploy.js --network localhost
 ```
+
 5. Test the contract
 
 ```sh
 npx hardhat test
 ```
 
-6. Deploy the contract
+6. Update src/Addresses.js with the address of your contract addresses (`courseAddress`)
 
-```sh
-npx hardhat run scripts/deploy.js --network localhost
-```
 
 7. Run the app on `http://localhost:3000`
 
@@ -77,6 +74,7 @@ npm start
 PROVIDER_URL=https://kovan.infura.io/v3/<YOUR INFURA API KEY HERE>;
 PRIVATE_KEY =  <YOUR PRIVATE KEY HERE> ;
 ```
+
 4. Get Kovan Eth. You will need it for deploying the contract to Kovan Testnet.
 
 - https://faucet.paradigm.xyz/
