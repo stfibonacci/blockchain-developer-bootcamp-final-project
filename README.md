@@ -74,6 +74,14 @@ npm start
 PROVIDER_URL=https://kovan.infura.io/v3/<YOUR INFURA API KEY HERE>;
 PRIVATE_KEY =  <YOUR PRIVATE KEY HERE> ;
 ```
+4. Go to `hardhat.config.js` and uncomment kovan network:
+
+```sh
+kovan: {
+          url: providerUrl,
+          accounts: [`0x${privateKey}`]
+    },
+```    
 
 4. Get Kovan Eth. You will need it for deploying the contract to Kovan Testnet.
 
