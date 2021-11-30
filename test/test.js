@@ -80,18 +80,53 @@ describe("Course", function () {
       it("it should have the right course fee", async function () {
         expect(await course.courseFee()).to.equal(courseFee.toString());
       });
+
+      it("it should have the right underlying token address", async function () {
+        expect(await course.underlying()).to.equal(daiAddrress);
+      });
+
+      it("it should have Enrollment to be open", async function () {
+        expect(await course.enrollmentIsOpen()).to.equal(true);
+      });
     
-      it("it should fail if not the owner", async function () {
+      it("it should revert startCourse if not the owner", async function () {
         await expect(course.connect(addr1).startCourse()).to.be.revertedWith("caller is not the owner");
       });
 
+      it("it should not enroll if not the right course fee", async function () {
+        await expect(course.connect(addr1).enroll(10)).to.be.revertedWith("amount is not equal to course fee");
+      });
+
+      it("it should not refund if user doesn't have a balance", async function () {
+        await expect(course.connect(addr1).refund()).to.be.revertedWith('you didnt enroll');
+      });
+
+
+      it("it should revert endCourse if not the owner", async function () {
+        await expect(course.connect(addr1).endCourse()).to.be.revertedWith("caller is not the owner");
+      });
+
+      it("it should revert pauseProtocol if not the owner", async function () {
+        await expect(course.connect(addr1).pauseProtocol()).to.be.revertedWith("caller is not the owner");
+      });
+      
+
+      it("it should revert unpauseProtocol if not the owner", async function () {
+        await expect(course.connect(addr1).unpauseProtocol()).to.be.revertedWith("caller is not the owner");
+      });
+
+      it("it should revert updateUnlockTimestamp if not the owner", async function () {
+        await expect(course.connect(addr1).updateUnlockTimestamp(4)).to.be.revertedWith("caller is not the owner");
+      });
+      
+
     })
     
-
+    
   })
 
 
-  describe("Course Clone", function () {
+  describe("Course Factory", function () {
      
     let cloneInstance;
    
