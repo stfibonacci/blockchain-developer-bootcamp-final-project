@@ -26,12 +26,12 @@ Studens can withdraw the course fee at the end of the course. They will get full
 ```sh
 git clone https://github.com/stfibonacci/blockchain-developer-bootcamp-final-project.git
 ```
-
+     
 
 2. Install the dependencies
 
 ```sh
-cd course-dapp
+cd blockchain-developer-bootcamp-final-project
 npm install
 ```
 
