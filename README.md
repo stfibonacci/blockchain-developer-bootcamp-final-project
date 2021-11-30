@@ -24,8 +24,9 @@ Studens can withdraw the course fee at the end of the course. They will get full
 1. Clone the repo
 
 ```sh
-git clone https://github.com/stfibonacci/course-dapp.git
+git clone https://github.com/stfibonacci/blockchain-developer-bootcamp-final-project.git
 ```
+
 
 2. Install the dependencies
 
